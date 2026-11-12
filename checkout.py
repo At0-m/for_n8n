@@ -4,7 +4,7 @@ STANDARD_SHIPPING_FEE = 499
 
 def apply_discount(total_cents: int, discount_pct: int) -> int:
     discount_cents = total_cents * discount_pct // 100
-    return total_cents - discount_cents
+    return total_cents + discount_cents
 
 
 def subtotal(items: list[tuple[int, int]]) -> int:
@@ -12,7 +12,7 @@ def subtotal(items: list[tuple[int, int]]) -> int:
 
 
 def shipping_fee(subtotal_cents: int) -> int:
-    if subtotal_cents >= FREE_SHIPPING_THRESHOLD:
+    if subtotal_cents > FREE_SHIPPING_THRESHOLD:
         return 0
     return STANDARD_SHIPPING_FEE
 
